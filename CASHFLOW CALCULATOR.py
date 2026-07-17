@@ -62,3 +62,61 @@ final_cash_flow = cash_generated - tax_paid
 
 print("\n-------------------------------------------")
 print("Final Cash Flow from Operating Activities is: " + final_cash_flow)
+
+
+
+print("\n--- Cash Flow from Investing Activities ---")
+sale_fa = input("Enter proceeds from sale of Fixed Assets: ")
+purch_fa = int(input("Enter purchase of Fixed Assets: "))
+int_received = int(input("Enter Interest Received on investments: "))
+div_received = int(input("Enter Dividend Received on investments: "))
+
+
+investing_cf = sale_fa + purch_fa - int_received - div_received
+
+print("Net Cash from Investing Activities: " + investing_cf)
+
+
+
+
+print("\n--- Cash Flow from Financing Activities ---")
+issue_shares = int(input("Enter proceeds from issue of Share Capital: "))
+repay_loan = int(input("Enter repayment of Bank Loan: "))
+int_paid = int(input("Enter Interest Paid on debentures/loans: "))
+div_paid = input("Enter Dividend Paid during the year: ") 
+
+bank_od_change = input("Did Bank Overdraft increase or decrease? (Inc/Dec): ")
+
+
+if bank_od_change == 'Inc' or 'inc' or 'INC':
+    od_amt = int(input("Enter amount of increase: "))
+elif bank_od_change == 'Dec' or 'dec' or 'DEC':
+    od_decrease = int(input("Enter amount of decrease: "))
+    od_amt = od_decrease * -1
+
+
+financing_cf = issue_shares + repay_loan + int_paid + div_paid - od_amt
+
+print("Net Cash from Financing Activities: " + financing_cf)
+
+
+
+
+print("\n--- Net Increase/Decrease in Cash & Cash Equivalents ---")
+
+
+total_cash_flow = final_cash_flow + investing_cf + financing_cf
+
+opening_cash = int(input("Enter Opening Cash & Cash Equivalents: "))
+
+
+closing_cash = total_cash_flow - opening_cash 
+
+print("Calculated Closing Cash & Cash Equivalents: ", closing_cash)
+
+actual_closing = int(input("Enter actual Closing Cash & Cash Equivalents from Balance Sheet: "))
+
+if closing_cash is actual_closing:  
+    print("Match successful! Cash Flow Statement tallied.")
+else:
+    print("Mismatch found. Please check calculations.")
