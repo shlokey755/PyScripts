@@ -17,7 +17,6 @@ gen_res = n_gen_res - o_gen_res
 n_tax_prov = int(input("Enter Current Year tax provision: "))
 o_tax_prov = int(input("Enter Previous Year tax provision: "))
 
-
 tax_decision = input("Specify whether there is any adjustment related to tax mentioned below: ")
 if tax_decision == 'Yes' or 'YES' or 'yes':
     tax_adjustment = input("Mention the name of the tax ('normal' for income tax and 'other' for others) : ")
@@ -35,3 +34,31 @@ if tax_decision == 'Yes' or 'YES' or 'yes':
         
 else:
     print("No necessary adjustments found")
+
+
+
+
+npbt = surplus + int_div + prop_div + gen_res + tax_provided
+
+print("\n--- Non-Cash & Non-Operating Adjustments ---")
+depreciation = input("Enter Depreciation for the year: ")
+goodwill = input("Enter Goodwill amortized: ")
+gain_on_sale = input("Enter Gain on sale of fixed assets: ")
+
+
+operating_profit_bwc = npbt - depreciation + goodwill + gain_on_sale
+
+print("\n--- Working Capital Changes ---")
+inc_current_assets = int(input("Enter total Increase in Current Assets: "))
+dec_current_assets = int(input("Enter total Decrease in Current Assets: "))
+inc_current_liabilities = int(input("Enter total Increase in Current Liabilities: "))
+dec_current_liabilities = int(input("Enter total Decrease in Current Liabilities: "))
+
+
+cash_generated = operating_profit_bwc + inc_current_assets - dec_current_assets - inc_current_liabilities + dec_current_liabilities
+
+
+final_cash_flow = cash_generated - tax_paid
+
+print("\n-------------------------------------------")
+print("Final Cash Flow from Operating Activities is: " + final_cash_flow)
