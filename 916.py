@@ -1,0 +1,4 @@
+import matplotlib.pyplot as plt
+x = plt.plot([1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,1,1],[1,3,3,1,3,3,1,7,7,1,3,3,1,2,2,-5,-5,1])
+plt.grid(False)
+plt.show()
